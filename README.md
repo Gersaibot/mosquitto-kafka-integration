@@ -38,7 +38,7 @@ apt-get install build-essential libwrap0-dev libssl-dev libc-ares-dev uuid-dev x
 
 Por otra parte, es necesario descargar Kafka desde el [sitio web oficial](https://kafka.apache.org/downloads) del proyecto de Apache. Los binarios de la version descargada incluyen Zookeeper, por lo cual no es necesario descargarlo. En caso contrario, se recomienda descargar Zookeeper desde su sitio web oficial [sitio web oficial](https://zookeeper.apache.org/releases.html#download) del proyecto.
 
-Una vez descargado, es necesario descomprimir el archivo. De ahora en adelante nos referiremos a la ruta de descompresión de Kafka como _$KAFKA_HOME_ (ruta raíz de kafka).
+Una vez descargado, es necesario descomprimir el archivo. De ahora en adelante nos referiremos a la ruta de descompresión de Kafka como `$KAFKA_HOME` (ruta raíz de kafka).
 
 Por último, necesitamos descargar y compilar la ultima versión del proyecto **kafka-connect-mqtt**, el cual provee un conector que permite capturar los mensajes recibidos en un topico de Mosquitto y publicarlos en un Topico de Kafka. Para ello necesitamos instalar Gradle, un automatizador de compilación de codigo fuente:
 
@@ -59,7 +59,7 @@ cd kafka-connect-mqtt
 ./gradlew clean jar
 ```
 
-Podemos observar que en la carpeta _kafka-connect-mqtt/buid/libs_ se habrá generado la libreria que funcionara como conector entre Mosquitto y Kafka. Procedemos a copiarla a las librerias de Kafka:
+Podemos observar que en la carpeta `kafka-connect-mqtt/buid/libs` se habrá generado la libreria que funcionara como conector entre Mosquitto y Kafka. Procedemos a copiarla a las librerias de Kafka:
 
 ```bash
 cp kafka-connect-mqtt/build/libs/kafka-connect-mqtt-1.1-SNAPSHOT.jar $KAFKA_HOME/libs/
@@ -88,8 +88,8 @@ Luego, creamos el usuario del broker que tendra los permisos para publicar mensa
 ```bash
 mosquitto_passwd -c /etc/mosquitto/pwfile <USUARIO_MQTT>
 ```
-Ej:bash
-```
+_Ej:_
+```bash
 mosquitto_passwd -c /etc/mosquitto/pwfile mosquitto
 ```
 
@@ -113,7 +113,7 @@ Ahora, creamos el directorio en el cual se almacenara la persistencia de Mosquit
 mkdir <UBICACION_PERSISTENCIA>
 chown mosquitto:mosquitto <UBICACION_PERSISTENCIA> -R
 ```
-Ej:
+_Ej:_
 ```bash
 mkdir /var/lib/mosquitto/
 chown mosquitto:mosquitto /var/lib/mosquitto/ -R
@@ -141,7 +141,7 @@ vi /etc/mosquitto/mosquitto.conf
   password_file /etc/mosquitto/pwfile
   acl_file /etc/mosquitto/<ACL_FILE>
 ```
-Ej:
+_Ej:_
 ```bash
   listener 1883 localhost
   persistence true
@@ -193,7 +193,7 @@ vi $KAFKA_HOME/config/mqtt.properties
   mqtt.user=<USUARIO_MQTT>
   mqtt.password=<PASSWORD>
 ```
-Ej:
+_Ej:_
 ```bash
   name=mqtt
   connector.class=com.evokly.kafka.connect.mqtt.MqttSourceConnector
@@ -209,7 +209,7 @@ Ej:
   mqtt.password=mosquitto
 ```
 
-Adicionalmente, desde la varsión 0.11.0.0, Kafka incluye un parser o convertidor de valores codificados como Base64. Este convertidor sera usado por la conexión para transformar los valores recibidos de Mosquitto a formato String convencional. Para habilitar el convertidor hay que agregar la siguiente línea al final del archivo de propiedades del tipo de conexión que se usara con kafka. En nuestro caso se usara una conexión standalone, por lo que hay que modificar el archivo _$KAFKA_HOME/config/connect-standalone.properties_: 
+Adicionalmente, desde la varsión 0.11.0.0, Kafka incluye un parser o convertidor de valores codificados como Base64. Este convertidor sera usado por la conexión para transformar los valores recibidos de Mosquitto a formato String convencional. Para habilitar el convertidor hay que agregar la siguiente línea al final del archivo de propiedades del tipo de conexión que se usara con kafka. En nuestro caso se usara una conexión standalone, por lo que hay que modificar el archivo `$KAFKA_HOME/config/connect-standalone.properties`: 
 
 ```bash
 value.converter=org.apache.kafka.connect.converters.ByteArrayConverter
@@ -253,7 +253,7 @@ Para suscribirse al topico de Mosquitto debemos ejecutar el siguiente comando:
 ```bash
 mosquitto_sub -h <IP> -p 1883 -v -t '<TOPICO_DE_SERVIDOR_MQTT>' -u <USUARIO_MQTT> -P <PASSWORD>
 ```
-Ej:
+_Ej:_
 ```bash
 mosquitto_sub -h localhost -p 1883 -v -t 'mosquitto_main_topic' -u mosquitto -P mosquitto
 ```
@@ -264,7 +264,7 @@ De forma similar, ejecutamos el siguiente comando para suscribirnos al topico de
 cd $KAFKA_HOME
 ./bin/kafka-console-consumer.sh -bootstrap-server <SERVIDOR_DE_KAFKA> --from-beginning --topic <TOPICO_DE_KAFKA>
 ```
-Ej:
+_Ej:_
 ```bash
 ./bin/kafka-console-consumer.sh --bootstrap-server 172.31.25.244:9092 --from-beginning --topic kafka_main_topic
 ```
@@ -274,7 +274,7 @@ Ahora, realizamos una publicación al tópico de Mosquitto:
 ```bash
 mosquitto_pub -h <IP> -p 1883  -t '<TOPICO_DE_SERVIDOR_MQTT>' -u <USUARIO_MQTT> -P <PASSWORD> -m '<MENSAJE>'
 ```
-Ej:
+_Ej:_
 ```bash
 mosquitto_pub -h localhost -p 1883  -t 'mosquitto_main_topic' -u mosquitto -P mosquitto -m 'Hello world!'
 ```
@@ -288,7 +288,7 @@ Para aplicar offsets en la suscripción del topico de Kafka sobre la data consul
 ```bash
 ./bin/kafka-simple-consumer-shell.sh --broker-list <LISTA_DE_SERVIDORES_DE_KAFKA> --topic <TOPICO_DE_KAFKA> --offset <OFFSET>
 ```
-Ej:
+_Ej:_
 ```bash
 ./bin/kafka-simple-consumer-shell.sh --broker-list localhost:9092 --topic kafka_main_topic --offset 2
 ```
@@ -302,8 +302,8 @@ Ej:
 
 ## Creditos
 
-Mosquitto fue escrito por Roger Light roger@atchoo.org
-El proyecto kafka-connect-mqtt fue deserrollado por Evokly S.A. info@evok.ly
+- Mosquitto fue escrito por Roger Light roger@atchoo.org
+- El proyecto kafka-connect-mqtt fue deserrollado por Evokly S.A. info@evok.ly
 
 
 
