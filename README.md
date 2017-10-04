@@ -30,11 +30,12 @@ Cabe destacar que la integración explicada acontinuación es unidireccional: **
 En primera instancia hay que descargar e instalar el broker Mosquitto de acuerdo a las instrucciones en su sitio web oficial para cada Sistema Operativo.
 
 Luego, para instalar las utilidades de cliente y las dependencias de Mosquitto debemos ejecutar los siguientes comandos:
+
 ```bash
 apt-get update
 sudo apt install mosquitto-clients
 apt-get install build-essential libwrap0-dev libssl-dev libc-ares-dev uuid-dev xsltproc
-```**
+```
 
 Por otra parte, es necesario descargar Kafka desde el [sitio web oficial](https://kafka.apache.org/downloads) del proyecto de Apache. Los binarios de la version descargada incluyen Zookeeper, por lo cual no es necesario descargarlo. En caso contrario, se recomienda descargar Zookeeper desde su sitio web oficial [sitio web oficial](https://zookeeper.apache.org/releases.html#download) del proyecto.
 
@@ -94,8 +95,8 @@ mosquitto_passwd -c /etc/mosquitto/pwfile mosquitto
 ```
 
 Se sugiere que se cree un archivo ACL el cual defina los permisos de los usuarios de Mosquitto sobre los tópicos:
-bash
-```
+
+```bash
 vi /etc/mosquitto/<ACL_FILE>
   user <USUARIO_MQTT>
   topic <TOPICO_DE_SERVIDOR_MQTT>
