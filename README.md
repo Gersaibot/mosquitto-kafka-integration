@@ -22,7 +22,7 @@ Cabe destacar que la integración explicada acontinuación es unidireccional: **
 
 * Java v1.8.0_144
 * Mosquitto v1.4.14
-* Apacha Kafka v0.11.0.1 Compilado en Scala 2.11
+* Apacha Kafka v0.11.0.1 compilado en Scala 2.11
 * kafka-connect-mqtt v1.1
 
 ## Instalación
