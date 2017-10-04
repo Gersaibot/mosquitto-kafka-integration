@@ -34,7 +34,7 @@ Luego, para instalar las utilidades de cliente y las dependencias de Mosquitto d
 apt-get update
 sudo apt install mosquitto-clients
 apt-get install build-essential libwrap0-dev libssl-dev libc-ares-dev uuid-dev xsltproc
-```
+```**
 
 Por otra parte, es necesario descargar Kafka desde el [sitio web oficial](https://kafka.apache.org/downloads) del proyecto de Apache. Los binarios de la version descargada incluyen Zookeeper, por lo cual no es necesario descargarlo. En caso contrario, se recomienda descargar Zookeeper desde su sitio web oficial [sitio web oficial](https://zookeeper.apache.org/releases.html#download) del proyecto.
 
@@ -100,7 +100,7 @@ vi /etc/mosquitto/<ACL_FILE>
   user <USUARIO_MQTT>
   topic <TOPICO_DE_SERVIDOR_MQTT>
 ```
-Ej:
+_Ej:_
 ```bash
 vi /etc/mosquitto/aclfile
   user mosquitto
@@ -295,10 +295,10 @@ _Ej:_
 
 ## Referencias
 
-[Mosquitto](https://mosquitto.org/)
-[Apache Kafka](https://kafka.apache.org/)
-[Apache Zookeeper](https://zookeeper.apache.org/)
-[Proyecto kafka-connect-mqtt](https://github.com/evokly/kafka-connect-mqtt)
+- [Mosquitto](https://mosquitto.org/)
+- [Apache Kafka](https://kafka.apache.org/)
+- [Apache Zookeeper](https://zookeeper.apache.org/)
+- [Proyecto kafka-connect-mqtt](https://github.com/evokly/kafka-connect-mqtt)
 
 ## Creditos
 
