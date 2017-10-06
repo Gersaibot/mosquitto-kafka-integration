@@ -27,7 +27,7 @@ Cabe destacar que la integración explicada acontinuación es unidireccional: **
 
 ## Instalación
 
-En primera instancia hay que descargar e instalar el broker Mosquitto de acuerdo a las instrucciones en su sitio web oficial para cada Sistema Operativo.
+En primera instancia hay que descargar e instalar el broker Mosquitto de acuerdo a las instrucciones en su [sitio web oficial](https://mosquitto.org/download/) para cada Sistema Operativo.
 
 Luego, para instalar las utilidades de cliente y las dependencias de Mosquitto debemos ejecutar los siguientes comandos:
 
