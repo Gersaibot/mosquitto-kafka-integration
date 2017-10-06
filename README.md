@@ -138,7 +138,7 @@ vi /etc/mosquitto/mosquitto.conf
   log_type information
   connection_messages true
   log_timestamp true
-  allow_anonymous true
+  allow_anonymous false
   password_file /etc/mosquitto/pwfile
   acl_file /etc/mosquitto/<ACL_FILE>
 ```
@@ -157,7 +157,7 @@ _Ej:_
   log_type information
   connection_messages true
   log_timestamp true
-  allow_anonymous true
+  allow_anonymous false
   password_file /etc/mosquitto/pwfile
   acl_file /etc/mosquitto/aclfile
 ```
